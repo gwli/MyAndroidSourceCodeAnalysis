@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
    
    content/target
+   content/nsight_tegra
 
 
 Indices and tables

@@ -56,8 +56,6 @@ debug Manually
 
    #. attach the jdb :command:`java -classpath {0} -Duser.home=. com.sun.tools.example.debug.tty.TTY -connect com.sun.jdi.SocketAttach:hostname=localhost,port={1} -sourcepath \"{2}\" -mi",classPath, port, sourceFilesDirectory` 
 
-   
-
 
 
 Android NDK 编译流程

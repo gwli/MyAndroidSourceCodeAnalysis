@@ -6,6 +6,7 @@
 #. 可以读取 os 任意文件
 #. 可以进行driver编译与安装
 #. 可以进行standlone app 开发
+#. Cross compiler and NDK build
 #. 远程debug的原理与过程
 
 
