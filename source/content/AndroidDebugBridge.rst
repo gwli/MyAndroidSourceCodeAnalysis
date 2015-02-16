@@ -13,7 +13,32 @@ logcat
 :command:`adb logcat -f log.txt`  写把log写到文件中。
 
 
+bugreport
+---------
 
+:command:`adb bugpreport` 对于收集板子信息非常有用，但是信息具大。
+
+
+AM and PM
+---------
+
+一个是Activity Management, 另一个PackageManagement. 同时我们还可以用aapt直接apk 读到各种信息。
+
+AM 里边也有bugreport功能。收集各种信息。
+
+
+打开一个app
+
+:command:`adb shell am -n com.nvidia.Bloom/.Bloom` 就打开了。
+:command:`adb shell am stop/force-stop com.nvidia.Bloom` 关闭一个apk.
+AM可以控制控制
+
+screenshot
+----------
+
+android有三条命令可以用
+
+:command:`screencap screenrecord screenshot` 。
 Issues
 ======
 
@@ -52,8 +77,6 @@ Issues
 See also
 ========
 
-
-
 #. `screencast <http://zh.soft-db.com/info/148174/screencast-pro/>`_  
 #. `google&#95;android&#95;platform&#95;model <http://www.databaseanswers.org/data&#95;models/google&#95;android/images/google&#95;android&#95;platform&#95;model.gif>`_  
 #. `android 不支tab补全以及ctl-c的方法 <http://www.360doc.com/content/10/0506/07/496343&#95;26284405.shtml>`_  
@@ -73,9 +96,6 @@ See also
 
 thinking
 ========
-
-
-
 
 
 -- Main.GangweiLi - 22 Oct 2012
