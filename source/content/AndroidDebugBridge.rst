@@ -11,6 +11,7 @@ logcat
 :command:`adb logcat -c` clear the entire log and exist
 
 :command:`adb logcat -f log.txt`  写把log写到文件中。
+:command:`adb logcat -f -d log.txt`  写把log写到文件中。
 
 
 bugreport
@@ -31,6 +32,7 @@ AM 里边也有bugreport功能。收集各种信息。
 
 :command:`adb shell am -n com.nvidia.Bloom/.Bloom` 就打开了。
 :command:`adb shell am stop/force-stop com.nvidia.Bloom` 关闭一个apk.
+
 AM可以控制控制
 
 screenshot
@@ -39,6 +41,12 @@ screenshot
 android有三条命令可以用
 
 :command:`screencap screenrecord screenshot` 。
+
+dumpsys
+-------
+
+可以用来查看系统的各种状态。
+http://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys-tool-and-what-are-its-benefits
 Issues
 ======
 
