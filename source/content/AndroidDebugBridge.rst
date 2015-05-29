@@ -47,6 +47,27 @@ dumpsys
 
 可以用来查看系统的各种状态。
 http://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys-tool-and-what-are-its-benefits
+
+backup
+------
+
+想要弄得root权限，其本质就是换掉boot.img，并且修改selinux,得到root权限之后，remount 成可读可写就行了。
+
+短信，联系人都是放在sqlite 中， 
+https://chombium.wordpress.com/2012/09/30/android-how-to-backup-contacts-and-sms-messages/
+
+./adb pull /data/data/com.android.providers.telephony/databases/mmssms.db
+./adb pull /data/data/com.android.providers.contacts/databases/contacts2.db
+
+用来恢复的。
+./adb shell mount -o remount,rw -t yaffs2 /dev/block/mtdblock3 /system
+./adb shell rm /data/data/com.android.providers.telephony/databases/mmssms.db
+./adb shell rm /data/data/com.android.providers.contacts/databases/contacts2.db
+./adb push mmssms.db /data/data/com.android.providers.telephony/databases/
+./adb push ~/Desktop/phone/contacts2.db /data/data/com.android.providers.contacts/databases/
+
+
+或者直接使用 backup 指令，http://mobilenetworkcomparison.org.uk/tutorials/how-to-backup-or-restore-any-android-phone-with-adb-shell/
 Issues
 ======
 
@@ -82,6 +103,20 @@ Issues
    #. `DDMS simple introduction <http://my.oschina.net/zhijie/blog/6760>`_ 
 `对于VM的调试是通过JDWP来进行的 <http://www.ibm.com/developerworks/cn/java/j-lo-jpda3/>`_ ， debugger 和 target vm。Target vm 中运行着我们希望要调试的程序，它与一般运行的 Java 虚拟机没有什么区别，只是在启动时加载了 Agent JDWP 从而具备了调试功能。而 debugger 就是我们熟知的调试器，它向运行中的 target vm 发送命令来获取 target vm 运行时的状态和控制 Java 程序的执行。Debugger 和 target vm 分别在各自的进程中运行，他们之间的通信协议就是 JDWP。
 
+
+
+如何解决adb 看到device没有permission 的问题
+-------------------------------------------
+
+改变一个 udev 的rule就可以了。
+
+
+.. code-block:: bash
+   #filename 51-android.rules
+   #adb protocol on passion (Tangle)
+   SUBSYSTEM=="usb" ATTR{idVendor}=="0955" MODE="0666" GROUP="plugdev"
+   SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666"
+   SUBSYSTEM=="usb", ATTR{idVendor}=="2717", ATTR{idProduct}=="9039", MODE="0666", OWNER="<username>"
 See also
 ========
 
