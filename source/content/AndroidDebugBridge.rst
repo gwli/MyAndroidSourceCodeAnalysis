@@ -33,7 +33,26 @@ AM 里边也有bugreport功能。收集各种信息。
 :command:`adb shell am -n com.nvidia.Bloom/.Bloom` 就打开了。
 :command:`adb shell am stop/force-stop com.nvidia.Bloom` 关闭一个apk.
 
-AM可以控制控制
+AM可以控制还可以传递参数
+
+:command:`am start -a android.intent.action.MAIN -n  net.yurushao.demo/net.yurushao.demo.ExampleActivity   --ei pid 10 --es str "hello, world"`
+
+或者编程实现 
+
+.. code-block:: java
+   
+   //sender
+   Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+   Bundle b = new Bundle();
+   b.putInt("key", 1); //Your id
+   intent.putExtras(b); //Put your id to your next Intent
+   startActivity(intent);
+   finish();
+
+   //receiver
+   Bundle b = getIntent().getExtras();
+   int value = b.getInt("key");
+
 
 screenshot
 ----------
@@ -117,6 +136,7 @@ Issues
    SUBSYSTEM=="usb" ATTR{idVendor}=="0955" MODE="0666" GROUP="plugdev"
    SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666"
    SUBSYSTEM=="usb", ATTR{idVendor}=="2717", ATTR{idProduct}=="9039", MODE="0666", OWNER="<username>"
+
 See also
 ========
 
