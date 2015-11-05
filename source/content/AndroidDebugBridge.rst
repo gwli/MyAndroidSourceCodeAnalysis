@@ -137,6 +137,13 @@ Issues
    SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666"
    SUBSYSTEM=="usb", ATTR{idVendor}=="2717", ATTR{idProduct}=="9039", MODE="0666", OWNER="<username>"
 
+
+getprop and setprop
+===================
+https://guardianproject.info/wiki/Android_getprop_collection,每一家都可能不一样。 
+#. `Android系统中setprop,getprop,watchprops命令的使用 <http://daimajishu.iteye.com/blog/1086627>`_  初始化的配置文件
+getprop 取值，setprop设值，watchprops 监测。 
+
 See also
 ========
 
@@ -144,7 +151,6 @@ See also
 #. `google&#95;android&#95;platform&#95;model <http://www.databaseanswers.org/data&#95;models/google&#95;android/images/google&#95;android&#95;platform&#95;model.gif>`_  
 #. `android 不支tab补全以及ctl-c的方法 <http://www.360doc.com/content/10/0506/07/496343&#95;26284405.shtml>`_  
 
-#. `Android系统中setprop,getprop,watchprops命令的使用 <http://daimajishu.iteye.com/blog/1086627>`_  初始化的配置文件
 
 #. `ADB/Fastboot Setup <https://sites.google.com/site/teamroyalsginger/guides-under-development/adb-fastboot-setup>`_  
 #. `adb over wifi <http://mehrvarz.github.io/android-debug-sans-usb/>`_  simple just need tcpport restart the daemo again.
