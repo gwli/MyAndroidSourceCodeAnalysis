@@ -6,6 +6,12 @@ Introduction
 NDK开发，通过封装把JAVA的所有消息传递都通过多线程与利用unix的管道与同步来解决。Java端使用android.app.nativeActivity. 同时也利用app_glue把消息的同步的机制给做好。因为Java本身就是多线程，NDK把所有杂事都进行转接到C/C++中，当然也可以自己实现glue这些同步的框架。例如消息的对队ALooper.事件，以及各种输入事件的处理。
 JNI 是Java 到c，然后由c到c++的过程。
 
+
+其实这样的开发过程，就像一个plugin的开发模式。 相当于上层用Java来当做脚本语言，就像unreal一样，上层的blueprint一样。 
+.so 就像plugin 一样，在 java 通过 ``System.loadLibarary("libname")`` 来加载。 并且同时声明其native 头，然后就通过
+JNI来进行调用。
+
+
 Hellword 调用native 真实过程
 ==================================
 
@@ -42,7 +48,6 @@ Hellword 调用native 真实过程
 
    android.mk ,主要控制 输入，输出 -I 以及源代码的关系 ,  ,
    application.mk ,  控制编译选项 , 例如 APP_PLATFORM=android-14 , APP_STL :=gnustl_static CPP_CFLAGS +=-Wno-error=format-security ,
-
    
 See also
 ========
@@ -61,8 +66,6 @@ See also
 
 Thinking
 ========
-
-
 
 *System.loadLibrary()*
 A way to invoke native method is to invoke System.LoadLibrary in a static initialization block. 并且是先声名，然后由Javah生成头文件，然后自己根据头文件写C的实现。所有java 能调用库接口是规范的，例如第一个参数都是envVar. 其实与`SWIG <http://www.swig.org/>`_ 都是一样的。然后把库放在特定的目录。并且用android.mk来推动。ndk-build 会来根据android.mk 来操作。 ndk-build 就是把make封装了一下。
@@ -144,8 +147,7 @@ renderscript   google又准备自己做一套graphic的system,了，这个功能
 
 
 standlone toolchain
-======================
- 
+===================
 
 there is sample
 
